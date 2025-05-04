@@ -169,14 +169,18 @@ function App() {
   };
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
+    <div
+      style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '16px',
+        boxSizing: 'border-box'
+      }}
+    >
       {/* 语言选择 */}
       <div style={{ position: 'absolute', top: 30, right: 40 }}>
         <span style={{ marginRight: 8, color: '#4B2067', fontWeight: 600 }}>{texts[lang].lang}:</span>
@@ -216,16 +220,21 @@ function App() {
         {texts[lang].button}
       </button>
       {drawResult && (
-        <div style={{
-          marginTop: 20,
-          padding: '24px 40px',
-          background: 'rgba(255,255,255,0.85)',
-          borderRadius: '12px',
-          fontSize: '24px',
-          color: '#4B2067',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
-          minWidth: 320
-        }}>
+        <div
+          style={{
+            marginTop: 20,
+            padding: '24px 5vw',
+            background: 'rgba(255,255,255,0.85)',
+            borderRadius: '12px',
+            fontSize: '24px',
+            color: '#4B2067',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+            width: '100%',
+            maxWidth: 420,
+            minWidth: 0,
+            boxSizing: 'border-box'
+          }}
+        >
           <div>{texts[lang].result}{tarotCards[lang][drawResult.idx]}</div>
           <div style={{ marginTop: 16, fontSize: '18px', color: '#333' }}>
             <b>{texts[lang].meaning}</b> {tarotMeanings[lang][drawResult.idx]}
