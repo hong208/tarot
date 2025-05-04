@@ -172,7 +172,7 @@ function App() {
     <div style={{
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
-      display: 'flex',
+      display: 'block',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center'
