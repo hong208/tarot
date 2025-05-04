@@ -142,7 +142,7 @@ function App() {
 
   useEffect(() => {
     setLang(detectLang());
-  }, []);
+  }, [setLang]);
 
   const handleDraw = () => {
     const idx = Math.floor(Math.random() * tarotCards[lang].length);
