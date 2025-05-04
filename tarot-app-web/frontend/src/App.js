@@ -179,7 +179,7 @@ function App() {
     }}>
       {/* 语言选择 */}
       <div style={{ position: 'absolute', top: 30, right: 40 }}>
-        
+
         <span style={{ marginRight: 8, color: '#4B2067', fontWeight: 600 }}>{texts[lang].lang}:</span>
         {languages.map(l => (
           <button
@@ -217,16 +217,24 @@ function App() {
         {texts[lang].button}
       </button>
       {drawResult && (
-        <div style={{
-          marginTop: 20,
-          padding: '24px 40px',
-          background: 'rgba(255,255,255,0.85)',
-          borderRadius: '12px',
-          fontSize: '24px',
-          color: '#4B2067',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
-          minWidth: 320
-        }}>
+        <div
+          style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 100,
+            background: '#fff',
+            borderRadius: 24,
+            boxShadow: '0 8px 32px rgba(75,32,103,0.10)',
+            padding: '32px 16px',
+            maxWidth: 420,
+            width: '90vw',
+            maxHeight: '90vh',
+            overflowY: 'auto',
+            boxSizing: 'border-box'
+          }}
+        >
           <div>{texts[lang].result}{tarotCards[lang][drawResult.idx]}</div>
           <div style={{ marginTop: 16, fontSize: '18px', color: '#333' }}>
             <b>{texts[lang].meaning}</b> {tarotMeanings[lang][drawResult.idx]}
