@@ -176,11 +176,19 @@ function App() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        padding: '16px',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        paddingTop: 48,
+        paddingBottom: 24
       }}
     >
+      <h1 style={{
+        color: '#4B2067',
+        marginBottom: 40,
+        fontSize: 28,
+        fontWeight: 700
+      }}>
+        {texts[lang].title}
+      </h1>
       {/* 语言选择 */}
       <div style={{ position: 'absolute', top: 30, right: 40 }}>
         <span style={{ marginRight: 8, color: '#4B2067', fontWeight: 600 }}>{texts[lang].lang}:</span>
@@ -203,7 +211,6 @@ function App() {
           </button>
         ))}
       </div>
-      <h1 style={{ color: '#4B2067', marginBottom: 40 }}>{texts[lang].title}</h1>
       <button
         onClick={handleDraw}
         style={{
