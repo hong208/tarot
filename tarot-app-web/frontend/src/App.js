@@ -172,146 +172,164 @@ function App() {
     <div
       style={{
         minHeight: '100vh',
+        width: '100vw',
         background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
         boxSizing: 'border-box',
-        paddingTop: 48,
-        paddingBottom: 24
+        overflow: 'hidden'
       }}
     >
-      <h1 style={{
-        color: '#4B2067',
-        marginBottom: 40,
-        fontSize: 28,
-        fontWeight: 700
-      }}>
-        {texts[lang].title}
-      </h1>
-      {/* 语言选择 */}
-      <div style={{ position: 'absolute', top: 30, right: 40 }}>
-        <span style={{ marginRight: 8, color: '#4B2067', fontWeight: 600 }}>{texts[lang].lang}:</span>
-        {languages.map(l => (
-          <button
-            key={l.code}
-            onClick={() => handleLangChange(l.code)}
-            style={{
-              margin: '0 4px',
-              padding: '4px 12px',
-              borderRadius: '6px',
-              border: lang === l.code ? '2px solid #4B2067' : '1px solid #ccc',
-              background: lang === l.code ? '#4B2067' : '#fff',
-              color: lang === l.code ? '#fff' : '#4B2067',
-              cursor: 'pointer',
-              fontWeight: lang === l.code ? 700 : 400
-            }}
-          >
-            {l.label}
-          </button>
-        ))}
-      </div>
-      <button
-        onClick={handleDraw}
+      <div
         style={{
-          padding: '12px 32px',
-          fontSize: '18px',
-          borderRadius: '8px',
-          border: 'none',
-          background: '#4B2067',
-          color: '#fff',
-          cursor: 'pointer',
-          marginBottom: 30
+          width: '100%',
+          maxWidth: 480,
+          background: 'rgba(255,255,255,0.85)',
+          borderRadius: 16,
+          boxShadow: '0 4px 24px rgba(75,32,103,0.10)',
+          padding: '24px 5vw',
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          maxHeight: '90vh',
+          overflowY: 'auto'
         }}
       >
-        {texts[lang].button}
-      </button>
-      {drawResult && (
-        <div
-          style={{
-            marginTop: 20,
-            padding: '24px 5vw',
-            background: 'rgba(255,255,255,0.85)',
-            borderRadius: '12px',
-            fontSize: '24px',
-            color: '#4B2067',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
-            width: '100%',
-            maxWidth: 420,
-            minWidth: 0,
-            boxSizing: 'border-box'
-          }}
-        >
-          <div>{texts[lang].result}{tarotCards[lang][drawResult.idx]}</div>
-          <div style={{ marginTop: 16, fontSize: '18px', color: '#333' }}>
-            <b>{texts[lang].meaning}</b> {tarotMeanings[lang][drawResult.idx]}
-          </div>
-          <button
-            onClick={handleAIFortune}
-            disabled={loading}
-            style={{
-              marginTop: 10,
-              padding: '8px 24px',
-              fontSize: '16px',
-              borderRadius: '8px',
-              border: 'none',
-              background: '#4B2067',
-              color: '#fff',
-              cursor: loading ? 'not-allowed' : 'pointer',
-              boxShadow: loading ? 'none' : '0 2px 8px rgba(75,32,103,0.08)'
-            }}
-          >
-            {loading ? texts[lang].aiLoading : texts[lang].ai}
-          </button>
-          {aiResult[lang] && (
-            <div
+        <h1 style={{
+          color: '#4B2067',
+          marginBottom: 40,
+          fontSize: 28,
+          fontWeight: 700
+        }}>
+          {texts[lang].title}
+        </h1>
+        {/* 语言选择 */}
+        <div style={{ position: 'absolute', top: 30, right: 40 }}>
+          <span style={{ marginRight: 8, color: '#4B2067', fontWeight: 600 }}>{texts[lang].lang}:</span>
+          {languages.map(l => (
+            <button
+              key={l.code}
+              onClick={() => handleLangChange(l.code)}
               style={{
-                marginTop: 28,
-                display: 'flex',
-                justifyContent: 'center'
+                margin: '0 4px',
+                padding: '4px 12px',
+                borderRadius: '6px',
+                border: lang === l.code ? '2px solid #4B2067' : '1px solid #ccc',
+                background: lang === l.code ? '#4B2067' : '#fff',
+                color: lang === l.code ? '#fff' : '#4B2067',
+                cursor: 'pointer',
+                fontWeight: lang === l.code ? 700 : 400
               }}
             >
+              {l.label}
+            </button>
+          ))}
+        </div>
+        <button
+          onClick={handleDraw}
+          style={{
+            padding: '12px 32px',
+            fontSize: '18px',
+            borderRadius: '8px',
+            border: 'none',
+            background: '#4B2067',
+            color: '#fff',
+            cursor: 'pointer',
+            marginBottom: 30
+          }}
+        >
+          {texts[lang].button}
+        </button>
+        {drawResult && (
+          <div
+            style={{
+              marginTop: 20,
+              padding: '24px 5vw',
+              background: 'rgba(255,255,255,0.85)',
+              borderRadius: '12px',
+              fontSize: '24px',
+              color: '#4B2067',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+              width: '100%',
+              maxWidth: 420,
+              minWidth: 0,
+              boxSizing: 'border-box'
+            }}
+          >
+            <div>{texts[lang].result}{tarotCards[lang][drawResult.idx]}</div>
+            <div style={{ marginTop: 16, fontSize: '18px', color: '#333' }}>
+              <b>{texts[lang].meaning}</b> {tarotMeanings[lang][drawResult.idx]}
+            </div>
+            <button
+              onClick={handleAIFortune}
+              disabled={loading}
+              style={{
+                marginTop: 10,
+                padding: '8px 24px',
+                fontSize: '16px',
+                borderRadius: '8px',
+                border: 'none',
+                background: '#4B2067',
+                color: '#fff',
+                cursor: loading ? 'not-allowed' : 'pointer',
+                boxShadow: loading ? 'none' : '0 2px 8px rgba(75,32,103,0.08)'
+              }}
+            >
+              {loading ? texts[lang].aiLoading : texts[lang].ai}
+            </button>
+            {aiResult[lang] && (
               <div
                 style={{
-                  background: 'linear-gradient(120deg, #f8fafc 60%, #e0c3fc 100%)',
-                  borderRadius: 16,
-                  boxShadow: '0 4px 24px rgba(75,32,103,0.10)',
-                  padding: '28px 32px',
-                  maxWidth: 480,
-                  minWidth: 320,
-                  width: '100%',
-                  border: '1.5px solid #e0c3fc',
-                  position: 'relative',
-                  fontFamily: 'serif'
+                  marginTop: 28,
+                  display: 'flex',
+                  justifyContent: 'center'
                 }}
               >
                 <div
                   style={{
-                    fontWeight: 700,
-                    fontSize: 20,
-                    color: '#4B2067',
-                    marginBottom: 12,
-                    letterSpacing: 1
+                    background: 'linear-gradient(120deg, #f8fafc 60%, #e0c3fc 100%)',
+                    borderRadius: 16,
+                    boxShadow: '0 4px 24px rgba(75,32,103,0.10)',
+                    padding: '28px 32px',
+                    maxWidth: 480,
+                    minWidth: 320,
+                    width: '100%',
+                    border: '1.5px solid #e0c3fc',
+                    position: 'relative',
+                    fontFamily: 'serif'
                   }}
                 >
-                  {texts[lang].ai}
-                </div>
-                <div
-                  style={{
-                    color: '#3a2257',
-                    fontSize: 17,
-                    lineHeight: 1.8,
-                    whiteSpace: 'pre-line',
-                    wordBreak: 'break-word'
-                  }}
-                >
-                  {aiResult[lang]}
+                  <div
+                    style={{
+                      fontWeight: 700,
+                      fontSize: 20,
+                      color: '#4B2067',
+                      marginBottom: 12,
+                      letterSpacing: 1
+                    }}
+                  >
+                    {texts[lang].ai}
+                  </div>
+                  <div
+                    style={{
+                      color: '#3a2257',
+                      fontSize: 17,
+                      lineHeight: 1.8,
+                      whiteSpace: 'pre-line',
+                      wordBreak: 'break-word'
+                    }}
+                  >
+                    {aiResult[lang]}
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-      )}
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
