@@ -172,13 +172,13 @@ function App() {
     <div style={{
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
-      display: 'block',
+      display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center'
     }}>
       {/* 语言选择 */}
-      <div style={{ position: 'absolute', top: 30, right: 40 }}>
+      <div style={{ position: 'relative', top: 30, right: 40 }}>
 
         <span style={{ marginRight: 8, color: '#4B2067', fontWeight: 600 }}>{texts[lang].lang}:</span>
         {languages.map(l => (
