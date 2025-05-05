@@ -175,10 +175,11 @@ function App() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center'
-    }}>
+      
+     
+      }}>
       {/* 语言选择 */}
-      <div style={{ position: 'relative', top: 30, right: 40 }}>
+      <div style={{ marginTop:10,alignSelf:"flex-end" }}>
 
         <span style={{ marginRight: 8, color: '#4B2067', fontWeight: 600 }}>{texts[lang].lang}:</span>
         {languages.map(l => (
@@ -186,8 +187,10 @@ function App() {
             key={l.code}
             onClick={() => handleLangChange(l.code)}
             style={{
+              width:'10vh',
+              minHeight:'5vh',
               margin: '0 4px',
-              padding: '4px 12px',
+              //padding: '4px 12px',
               borderRadius: '6px',
               border: lang === l.code ? '2px solid #4B2067' : '1px solid #ccc',
               background: lang === l.code ? '#4B2067' : '#fff',
@@ -200,7 +203,7 @@ function App() {
           </button>
         ))}
       </div>
-      <h1 style={{ color: '#4B2067', marginBottom: 40 }}>{texts[lang].title}</h1>
+      <h1 style={{ color: '#4B2067', marginBottom: 10 }}>{texts[lang].title}</h1>
       <button
         onClick={handleDraw}
         style={{
@@ -219,31 +222,27 @@ function App() {
       {drawResult && (
         <div
           style={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            zIndex: 100,
+            
+            //flexBasis: 420,
+            
             background: '#fff',
             borderRadius: 24,
             boxShadow: '0 8px 32px rgba(75,32,103,0.10)',
             padding: '32px 16px',
-            maxWidth: 420,
-            width: '90vw',
-            maxHeight: '90vh',
-            overflowY: 'auto',
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            minWidth:'50vh',
+           
           }}
         >
           <div>{texts[lang].result}{tarotCards[lang][drawResult.idx]}</div>
-          <div style={{ marginTop: 16, fontSize: '18px', color: '#333' }}>
+          <div style={{ fontSize: '18px', color: '#333' ,width:"60%"}}>
             <b>{texts[lang].meaning}</b> {tarotMeanings[lang][drawResult.idx]}
           </div>
           <button
             onClick={handleAIFortune}
             disabled={loading}
             style={{
-              marginTop: 10,
+              marginTop:10,
               padding: '8px 24px',
               fontSize: '16px',
               borderRadius: '8px',
@@ -259,9 +258,9 @@ function App() {
           {aiResult[lang] && (
             <div
               style={{
-                marginTop: 28,
-                display: 'flex',
-                justifyContent: 'flex-start'
+                justifyContent:'center',
+                alignitems:'center',
+                
               }}
             >
               <div
@@ -269,12 +268,12 @@ function App() {
                   background: 'linear-gradient(120deg, #f8fafc 60%, #e0c3fc 100%)',
                   borderRadius: 16,
                   boxShadow: '0 4px 24px rgba(75,32,103,0.10)',
-                  padding: '28px 32px',
-                  maxWidth: 480,
-                  minWidth: 320,
+                  //padding: '28px 32px',
+                  
                   width: '100%',
+                  top: '20%',
                   border: '1.5px solid #e0c3fc',
-                  position: 'relative',
+                  marginTop:'20px',
                   fontFamily: 'serif'
                 }}
               >
@@ -283,6 +282,7 @@ function App() {
                     fontWeight: 700,
                     fontSize: 20,
                     color: '#4B2067',
+                    marginLeft:20,
                     marginBottom: 12,
                     letterSpacing: 1
                   }}
@@ -291,6 +291,7 @@ function App() {
                 </div>
                 <div
                   style={{
+                    marginLeft:20,
                     color: '#3a2257',
                     fontSize: 17,
                     lineHeight: 1.8,
